@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>නැණ AI Education Platform - Sri Lanka's Best AI Tutor for O/L & A/L</title>
+    <meta name="description" content="නැණ AI is Sri Lanka's #1 AI Education Platform. Study for O/L and A/L with AI Tutors, Map Marking Games, Structured Quizzes, and Smart Notebooks. Say goodbye to exam stress.">
+    <meta name="keywords" content="නැණ AI, Sri Lanka AI Tutor, O/L Maths, A/L Physics, Sinhala Tuition, Past Papers, Map Marking Game, AI Counsellor, Smart Classroom, Sri Lanka Education">
+    <meta name="author" content="නැණ AI Technologies">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nenaai.tech/">
+    <meta property="og:title" content="නැණ AI Education Platform - Your Personal Exam Hero">
+    <meta property="og:description" content="Stop struggling with difficult lessons. නැණ AI explains everything in Sinhala, English, or Singlish. Try the Map Marking Game and AI Notebooks today!">
+    <meta property="og:image" content="https://nenaai.tech/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nenaai.tech/">
+    <meta property="twitter:title" content="නැණ AI Education Platform">
+    
+    <!-- Google Fonts: Nunito for that rounded, friendly feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Nunito"', 'sans-serif'],
+                    },
+                    colors: {
+                        clay: {
+                            bg: '#f0f4f8',
+                            primary: '#4f46e5', // Indigo
+                            accent: '#ec4899',  // Pink
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'float-medium': 'float 6s ease-in-out infinite',
+                        'float-fast': 'float 4s ease-in-out infinite',
+                        'float-reverse': 'float-reverse 7s ease-in-out infinite',
+                        'bounce-slight': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'typing': 'typing 1.5s infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+                            "50%": { transform: "translateY(-20px) rotate(5deg)" }
+                        },
+                        'float-reverse': {
+                             "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+                            "50%": { transform: "translateY(20px) rotate(-5deg)" }
+                        },
+                        typing: {
+                            "0%, 100%": { opacity: 0.2 },
+                            "50%": { opacity: 1 }
+                        },
+                        fadeInUp: {
+                            "0%": { opacity: 0, transform: "translateY(10px)" },
+                            "100%": { opacity: 1, transform: "translateY(0)" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #f0f4f8; /* Soft blue-grey background for claymorphism */
+        }
+
+        /* CLAYMORPHISM ESSENTIALS */
+        .clay-card {
+            background: #f0f4f8;
+            border-radius: 32px;
+            box-shadow: 
+                8px 8px 16px #d1d9e6, 
+                -8px -8px 16px #ffffff;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .clay-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                12px 12px 20px #d1d9e6, 
+                -12px -12px 20px #ffffff;
+        }
+
+        /* Inset Clay for inputs or pressed states */
+        .clay-inset {
+            background: #f0f4f8;
+            border-radius: 20px;
+            box-shadow: 
+                inset 6px 6px 10px #d1d9e6, 
+                inset -6px -6px 10px #ffffff;
+        }
+
+        /* Colored Clay Buttons */
+        .clay-btn-primary {
+            background: #4f46e5;
+            color: white;
+            border-radius: 20px;
+            box-shadow: 
+                6px 6px 10px #babbc0, 
+                -6px -6px 10px #ffffff,
+                inset 4px 4px 8px rgba(255,255,255,0.2),
+                inset -4px -4px 8px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .clay-btn-primary:active {
+            transform: scale(0.98);
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .clay-btn-secondary {
+            background: #ffffff;
+            color: #475569;
+            border-radius: 20px;
+            box-shadow: 
+                6px 6px 10px #babbc0, 
+                -6px -6px 10px #ffffff;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .clay-btn-secondary:hover {
+            border-color: #e2e8f0;
+        }
+        
+        .clay-btn-whatsapp {
+            background: #25D366;
+            color: white;
+            border-radius: 20px;
+            box-shadow: 
+                6px 6px 10px #babbc0, 
+                -6px -6px 10px #ffffff;
+            transition: all 0.2s;
+        }
+        
+        .clay-btn-whatsapp:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 3D Floating Blocks */
+        .block-3d {
+            position: absolute;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #475569;
+            box-shadow: 
+                15px 15px 30px rgba(163, 177, 198, 0.6), 
+                -15px -15px 30px rgba(255, 255, 255, 0.8),
+                inset 2px 2px 5px rgba(255,255,255,1),
+                inset -2px -2px 5px rgba(0,0,0,0.05);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #4f46e5, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Marshmallow Social Icons */
+        .floating-socials {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .marshmallow-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                6px 6px 12px #b8b9be, 
+                -6px -6px 12px #ffffff,
+                inset 2px 2px 5px rgba(255,255,255,0.4),
+                inset -2px -2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .marshmallow-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 
+                8px 8px 16px #b8b9be, 
+                -8px -8px 16px #ffffff,
+                inset 2px 2px 5px rgba(255,255,255,0.4),
+                inset -2px -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .marshmallow-icon::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        /* Brand Colors for Marshmallow Icons */
+        .bg-whatsapp { background: #25D366; }
+        .bg-facebook { background: #1877F2; }
+        .bg-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .bg-tiktok { background: #000000; }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        /* Chat Typing Indicator */
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #6366f1;
+            border-radius: 50%;
+            display: inline-block;
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+    </style>
+</head>
+<body class="text-slate-700 overflow-x-hidden" onload="initLang(); startChatSimulation()">
+
+    <!-- Marshmallow Floating Social Media Buttons -->
+    <div class="floating-socials hidden md:flex">
+        <a href="https://wa.me/94772997270" class="marshmallow-icon bg-whatsapp" title="WhatsApp"><i data-lucide="message-circle"></i></a>
+        <a href="https://www.facebook.com/share/1U8vH5Y19V/?mibextid=wwXIfr" class="marshmallow-icon bg-facebook" title="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://www.instagram.com/slnenaai?igsh=MWc4MXFidXg1bjU2NA%3D%3D&utm_source=qr" class="marshmallow-icon bg-instagram" title="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://www.tiktok.com/@slnenaai?_r=1&_t=ZS-92PdL2jMfeD" class="marshmallow-icon bg-tiktok" title="TikTok"><i data-lucide="video"></i></a>
+    </div>
+
+    <!-- SECTION 1: NAVIGATION -->
+    <nav class="fixed w-full z-50 transition-all duration-300 px-4 py-4">
+        <div class="container mx-auto clay-card !rounded-2xl px-6 py-3 flex justify-between items-center bg-white/80 backdrop-blur-sm">
+            <div class="flex items-center gap-3">
+                <!-- System Logo -->
+                <img src="https://firebasestorage.googleapis.com/v0/b/nenaai-90471.firebasestorage.app/o/branding%2Flogo192.png?alt=media&token=9f478070-a4a1-4203-9da6-00ec7a75a2f9" alt="Nana AI Logo" class="w-10 h-10 rounded-xl shadow-lg">
+                <span class="text-xl md:text-2xl font-black text-slate-800 tracking-tight" data-i18n="brand_name">නැණ AI Platform</span>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-6 font-bold text-slate-600 text-sm">
+                <a href="#features" class="hover:text-indigo-600 transition-colors" data-i18n="nav_features">Features</a>
+                <a href="#notebooks" class="hover:text-indigo-600 transition-colors" data-i18n="nav_notebooks">Notebooks</a>
+                <a href="#pricing" class="hover:text-indigo-600 transition-colors" data-i18n="nav_pricing">Pricing</a>
+                <a href="#faq" class="hover:text-indigo-600 transition-colors" data-i18n="nav_faq">FAQ</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Language Toggle -->
+                <button onclick="toggleLanguage()" class="clay-inset px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-slate-200 transition-colors">
+                    <span id="lang-display">🇺🇸 EN</span>
+                    <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                </button>
+
+                <a href="https://nenaai.tech/" class="clay-btn-primary px-6 py-2.5 font-bold text-sm" data-i18n="btn_get_started">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 2: HERO SECTION -->
+    <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Cleaner 3D Floating Blocks (Reduced Count) -->
+        <div class="block-3d w-24 h-24 top-32 left-[5%] animate-float-slow text-indigo-500 text-5xl opacity-80">∑</div>
+        <div class="block-3d w-20 h-20 bottom-32 right-[10%] animate-float-reverse text-pink-500 text-4xl opacity-80">?</div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Left: Text Content -->
+                <div class="w-full lg:w-1/2 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-indigo-100 shadow-sm mb-6 animate-bounce-slight">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        <span class="text-sm font-bold text-slate-600" data-i18n="hero_badge">Unlock Your True Potential</span>
+                    </div>
+
+                    <h1 class="text-5xl lg:text-7xl font-black text-slate-800 mb-6 leading-tight">
+                        <span data-i18n="hero_title_1">Don't Just Study.</span> <br>
+                        <span class="text-gradient" data-i18n="hero_title_2">Master It.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-slate-600 mb-8 font-bold leading-relaxed">
+                        <span data-i18n="hero_desc_main">"Exam එකට බය වෙන්න එපා. අපි ඉන්නවනේ."</span> <br class="hidden lg:block">
+                        <span class="font-normal text-lg" data-i18n="hero_desc_sub">Exam stress is real. But you don't have to face it alone. නැණ AI is your personal mentor that turns "I can't" into "I did it". Let's crush those exams together.</span>
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mt-8">
+                        <a href="#pricing" class="clay-btn-primary w-full sm:w-auto px-8 py-4 text-lg font-bold flex items-center justify-center gap-2 hover:scale-105 transition-transform">
+                            <span data-i18n="btn_view_plans">Start Your Journey</span>
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#video-demo" class="clay-card w-full sm:w-auto px-8 py-4 text-slate-700 font-bold flex items-center justify-center gap-2 hover:bg-white">
+                            <i data-lucide="play-circle" class="w-5 h-5 text-indigo-500"></i>
+                            <span data-i18n="btn_watch_video">See the Magic</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Hero Interactive Element (Chat Simulation) -->
+                <div class="w-full lg:w-1/2 relative perspective-1000">
+                    <div class="clay-card p-6 relative z-20 transform rotate-y-12 rotate-x-6 transition-transform hover:rotate-0 duration-500 bg-white/60 backdrop-blur-md min-h-[350px] flex flex-col">
+                        <!-- Mock UI Header -->
+                        <div class="flex items-center justify-between mb-4 border-b border-slate-200 pb-2">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="text-xs font-bold text-slate-400">AI Personal Tutor</div>
+                        </div>
+                        
+                        <div class="space-y-4 flex-grow relative" id="chat-simulation-container">
+                            <!-- Content injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: VIDEO DEMO -->
+    <section id="video-demo" class="py-20 bg-white/50 relative overflow-hidden">
+        <!-- Distributed 3D Block -->
+        <div class="block-3d w-16 h-16 top-10 left-10 animate-float-medium text-green-500 text-2xl opacity-60">A+</div>
+
+        <div class="container mx-auto px-4 max-w-5xl relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black text-slate-800" data-i18n="video_title">See නැණ AI in Action</h2>
+                <p class="text-slate-600 mt-2" data-i18n="video_subtitle">Watch how thousands of students are improving their grades in just minutes a day.</p>
+            </div>
+            
+            <div class="clay-card p-4 md:p-6 bg-white transform hover:scale-[1.01] transition-transform duration-500">
+                <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-inner clay-inset relative group">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0" title="Nana AI Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition-colors pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: DETAILED FEATURES -->
+    <section id="features" class="py-24 overflow-hidden relative">
+        <!-- Distributed 3D Blocks -->
+        <div class="block-3d w-20 h-20 top-1/4 right-[5%] animate-float-reverse text-blue-500 text-4xl opacity-50"><i data-lucide="flask-conical"></i></div>
+        <div class="block-3d w-16 h-16 bottom-1/4 left-[5%] animate-float-slow text-orange-500 text-3xl opacity-50"><i data-lucide="dna"></i></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            
+            <div class="text-center mb-20">
+                <span class="text-pink-500 font-bold tracking-wider uppercase text-sm bg-pink-50 px-4 py-1 rounded-full border border-pink-100">Why We Are Different</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-800 mt-4 leading-tight" data-i18n="feat_main_title">More Than Just an App.<br>It's Your Success Partner.</h2>
+            </div>
+
+            <!-- Feature Block 1: The AI Assistant -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-32">
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div class="clay-card p-8 bg-indigo-50/50 border-indigo-100">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-indigo-300">
+                            <i data-lucide="bot" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-black text-slate-800 mb-4" data-i18n="f1_title">The Smartest AI Assistant</h3>
+                        <p class="text-lg text-slate-600 mb-6 leading-relaxed" data-i18n="f1_desc">
+                            Stuck on a Physics problem at 11 PM? Just take a photo or speak to Nana. Our AI analyzes your question and breaks it down into simple steps using local syllabus standards.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f1_p1">Understand Singlish voice commands</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f1_p2">Upload photos of handwritten sums</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Custom Clay Composition 1 -->
+                <div class="w-full lg:w-1/2 order-1 lg:order-2 relative h-[400px] flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-200 to-purple-200 rounded-full filter blur-3xl opacity-40 animate-pulse-slow"></div>
+                    <div class="relative z-10 w-4/5 h-4/5 clay-card p-6 flex flex-col justify-center gap-4 transform rotate-3 transition-transform hover:rotate-0 bg-white/80">
+                         <div class="absolute -top-6 -right-6 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-indigo-500 animate-bounce-slight z-20">
+                            <i data-lucide="message-square" class="w-8 h-8"></i>
+                        </div>
+                        <div class="flex gap-3">
+                             <div class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-white flex items-center justify-center"><i data-lucide="user" class="w-5 h-5 text-indigo-300"></i></div>
+                             <div class="clay-inset px-4 py-3 rounded-tr-xl rounded-br-xl rounded-bl-xl text-xs text-slate-500 w-3/4 font-semibold">
+                                 Can you explain Quantum Mechanics?
+                             </div>
+                        </div>
+                        <div class="flex gap-3 flex-row-reverse">
+                             <div class="w-10 h-10 rounded-full bg-indigo-500 border-2 border-white flex items-center justify-center text-white font-bold text-xs">AI</div>
+                             <div class="bg-indigo-500 text-white px-4 py-3 rounded-tl-xl rounded-bl-xl rounded-br-xl text-xs w-3/4 shadow-lg font-medium">
+                                 Sure! It's the study of matter and energy at the most fundamental level.
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Block 2: Notebooks & Mind Maps -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-32">
+                 <!-- Custom Clay Composition 2 -->
+                <div class="w-full lg:w-1/2 relative h-[400px] flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tl from-pink-200 to-orange-200 rounded-full filter blur-3xl opacity-40 animate-pulse-slow"></div>
+                    <div class="relative z-10 w-4/5 h-4/5 clay-card p-2 transform -rotate-2 transition-transform hover:rotate-0 bg-white/80">
+                         <div class="h-full w-full clay-inset rounded-2xl p-6 relative overflow-hidden">
+                             <div class="flex items-center justify-between mb-4 border-b border-slate-200 pb-2">
+                                 <div class="h-4 w-24 bg-slate-300 rounded"></div>
+                                 <div class="h-6 w-6 rounded-full bg-pink-400"></div>
+                             </div>
+                             <div class="space-y-3">
+                                 <div class="h-3 w-full bg-slate-200 rounded"></div>
+                                 <div class="h-3 w-5/6 bg-slate-200 rounded"></div>
+                                 <div class="h-3 w-4/6 bg-slate-200 rounded"></div>
+                             </div>
+                             <div class="absolute bottom-6 right-6 flex gap-2">
+                                 <div class="w-12 h-12 rounded-full bg-white shadow-lg border-2 border-pink-200 flex items-center justify-center animate-bounce-slight"><i data-lucide="share-2" class="text-pink-400 w-5 h-5"></i></div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="clay-card p-8 bg-pink-50/50 border-pink-100">
+                        <div class="w-16 h-16 rounded-2xl bg-pink-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-pink-300">
+                            <i data-lucide="book-open" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-black text-slate-800 mb-4" data-i18n="f2_title">Your Digital Brain</h3>
+                        <p class="text-lg text-slate-600 mb-6 leading-relaxed" data-i18n="f2_desc">
+                            Forget messy books. නැණ AI brings you the ultimate Digital Notebook. Record your teacher's voice, and let AI transcribe and summarize it for you automatically.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f2_p1">Generate Mind Maps instantly</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f2_p2">Auto-create Flashcards for revision</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Block 3: Map Game & Quizzes -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-32">
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div class="clay-card p-8 bg-green-50/50 border-green-100">
+                        <div class="w-16 h-16 rounded-2xl bg-green-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-green-300">
+                            <i data-lucide="gamepad-2" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-black text-slate-800 mb-4" data-i18n="f3_title">Gamified Learning</h3>
+                        <p class="text-lg text-slate-600 mb-6 leading-relaxed" data-i18n="f3_desc">
+                            Learning Geography shouldn't be boring. Play our interactive Map Marking game to master the Sri Lankan and World maps for O/L exams.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f3_p1">Structured Paper AI Marking</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f3_p2">Challenge Mode: Beat the Clock</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                 <!-- Custom Clay Composition 3 -->
+                <div class="w-full lg:w-1/2 order-1 lg:order-2 relative h-[400px] flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-green-200 to-teal-200 rounded-full filter blur-3xl opacity-40 animate-pulse-slow"></div>
+                     <div class="relative z-10 w-4/5 h-4/5 clay-card p-4 flex items-center justify-center transform rotate-2 transition-transform hover:rotate-0 bg-green-50/80">
+                         <svg viewBox="0 0 200 200" class="w-full h-full text-green-200 fill-current drop-shadow-xl">
+                             <path d="M40,100 Q60,40 100,20 T160,100 T100,180 T40,100" />
+                         </svg>
+                         <div class="absolute top-1/4 left-1/3 animate-bounce">
+                             <i data-lucide="map-pin" class="w-8 h-8 text-red-500 fill-red-500 drop-shadow-md"></i>
+                         </div>
+                         <div class="absolute bottom-1/3 right-1/3 animate-bounce" style="animation-delay: 0.5s;">
+                             <i data-lucide="map-pin" class="w-8 h-8 text-blue-500 fill-blue-500 drop-shadow-md"></i>
+                         </div>
+                         <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-green-600 shadow-md">
+                             Score: 1250
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Feature Block 4: AI Counsellor (New) -->
+             <div class="flex flex-col lg:flex-row items-center gap-12">
+                 <!-- Custom Clay Composition 4 -->
+                <div class="w-full lg:w-1/2 relative h-[400px] flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tl from-purple-200 to-blue-200 rounded-full filter blur-3xl opacity-40 animate-pulse-slow"></div>
+                     <div class="relative z-10 w-4/5 h-4/5 clay-card flex items-center justify-center bg-white/80 p-10 transform -rotate-1 hover:rotate-0 transition-transform">
+                         <div class="relative w-40 h-40">
+                             <i data-lucide="heart" class="w-full h-full text-purple-100 fill-purple-100 drop-shadow-xl animate-pulse"></i>
+                             <div class="absolute inset-0 flex items-center justify-center">
+                                 <div class="bg-white/90 backdrop-blur px-4 py-2 rounded-xl shadow-lg text-purple-600 font-bold text-sm">
+                                     You are not alone.
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="clay-card p-8 bg-purple-50/50 border-purple-100">
+                        <div class="w-16 h-16 rounded-2xl bg-purple-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-purple-300">
+                            <i data-lucide="heart-pulse" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-black text-slate-800 mb-4" data-i18n="f4_title">Your Private Safe Space</h3>
+                        <p class="text-lg text-slate-600 mb-6 leading-relaxed" data-i18n="f4_desc">
+                            Exams are stressful. Life is hard. Talk to your AI Counsellor anytime. It's a judgment-free zone where nothing is saved.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f4_p1">100% Private & Anonymous</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f4_p2">Chats are auto-deleted</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3 h-3"></i></div>
+                                <span class="font-bold text-slate-700" data-i18n="f4_p3">Available 24/7 for emotional support</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: PRICING (UPDATED) -->
+    <section id="pricing" class="py-24 relative overflow-hidden bg-white/40">
+        <!-- Distributed 3D Blocks -->
+        <div class="block-3d w-24 h-24 bottom-10 right-10 animate-float-medium text-pink-500 text-5xl opacity-40">Rs</div>
+
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-indigo-50 -z-10"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-red-500 font-bold tracking-wider uppercase text-sm border border-red-200 bg-red-50 px-3 py-1 rounded-full">No Free Mode</span>
+                <h2 class="text-4xl font-black text-slate-800 mt-4 mb-6" data-i18n="price_title">Monthly Plans</h2>
+                <p class="text-lg text-slate-600" data-i18n="price_desc">
+                    Premium AI education. All features included in every package. <br>
+                    <strong>Choose based on your Token Usage need.</strong>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end mb-12">
+                
+                <!-- SPARK Plan -->
+                <div class="clay-card p-8 relative hover:scale-105 transition-transform bg-white">
+                    <h3 class="text-2xl font-black text-slate-700 mb-2">Spark</h3>
+                    <div class="text-4xl font-black text-indigo-600 mb-2">Rs. 1,599</div>
+                    <div class="text-sm font-bold text-slate-400 mb-6">Monthly Plan</div>
+                    
+                    <div class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-xl font-bold text-center mb-6">
+                        Light AI Use
+                    </div>
+                    
+                    <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> All AI Features Included</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Map Marking Game</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Digital Notebooks</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Short Notes Library</li>
+                    </ul>
+                    <a href="https://wa.me/94772997270?text=I%20want%20Spark%20Package" class="clay-btn-secondary w-full py-3 flex justify-center font-bold">Choose Spark</a>
+                </div>
+
+                <!-- FUSION Plan -->
+                <div class="clay-card p-8 relative border-4 border-indigo-500 transform scale-105 z-10 bg-white shadow-xl shadow-indigo-200">
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-6 py-1 rounded-full text-sm font-bold shadow-lg">RECOMMENDED</div>
+                    <h3 class="text-2xl font-black text-slate-800 mb-2">Fusion</h3>
+                    <div class="text-5xl font-black text-indigo-600 mb-2">Rs. 2,599</div>
+                    <div class="text-sm font-bold text-slate-400 mb-6">Monthly Plan</div>
+                    
+                    <div class="bg-indigo-600 text-white px-4 py-3 rounded-xl font-bold text-center mb-8 shadow-lg">
+                        High AI Use
+                    </div>
+                    
+                    <ul class="space-y-3 text-sm text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-600"></i> Everything in Spark</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-600"></i> Higher Token Limit</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-600"></i> Ideal for Heavy Users</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-600"></i> Faster Response Time</li>
+                    </ul>
+                    <a href="https://wa.me/94772997270?text=I%20want%20Fusion%20Package" class="clay-btn-primary w-full py-4 flex justify-center font-bold shadow-indigo-300">Choose Fusion</a>
+                </div>
+
+                <!-- QUANTUM Plan -->
+                <div class="clay-card p-8 relative hover:scale-105 transition-transform bg-white">
+                    <h3 class="text-2xl font-black text-pink-600 mb-2">Quantum</h3>
+                    <div class="text-4xl font-black text-indigo-600 mb-2">Rs. 4,599</div>
+                    <div class="text-sm font-bold text-slate-400 mb-6">Monthly Plan</div>
+                    
+                    <div class="bg-pink-100 text-pink-700 px-4 py-2 rounded-xl font-bold text-center mb-6">
+                        Intensive Study
+                    </div>
+                    
+                    <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Maximum Power</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Best for Exam Crunch</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Priority Support</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Early Access Features</li>
+                    </ul>
+                    <a href="https://wa.me/94772997270?text=I%20want%20Quantum%20Package" class="clay-btn-secondary w-full py-3 flex justify-center font-bold">Choose Quantum</a>
+                </div>
+
+            </div>
+            
+            <!-- Payment Info Block -->
+            <div class="max-w-4xl mx-auto clay-card p-8 bg-indigo-50/50 text-center border-indigo-200">
+                <h4 class="text-xl font-bold text-slate-800 mb-4" data-i18n="price_note_1">Transparent & Secure Payments</h4>
+                <div class="flex flex-wrap justify-center gap-6 text-slate-600 mb-6">
+                    <div class="flex items-center gap-2 font-semibold">
+                        <i data-lucide="credit-card" class="w-5 h-5 text-indigo-500"></i> Visa & MasterCard
+                    </div>
+                </div>
+                <p class="text-slate-600" data-i18n="price_note_2">
+                    We never charge large upfront fees. You only pay the monthly subscription shown above. <br>
+                    <strong>Cancel anytime. No hidden charges.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: FAQ -->
+    <section id="faq" class="py-20 relative">
+        <!-- Distributed 3D Block -->
+        <div class="block-3d w-12 h-12 top-10 left-[20%] animate-float-slow text-gray-400 text-2xl opacity-40">Q</div>
+
+        <div class="container mx-auto px-4 max-w-4xl relative z-10">
+            <h2 class="text-3xl font-black text-center mb-12" data-i18n="faq_title">Frequently Asked Questions</h2>
+            
+            <div class="space-y-6">
+                <details class="clay-card p-6 group cursor-pointer bg-white">
+                    <summary class="font-bold text-lg list-none flex justify-between items-center text-slate-800">
+                        <span data-i18n="faq_1_q">How do I pay for the package?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-indigo-500"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="faq_1_a">
+                        You can easily subscribe using any Bank Card (Visa/Master). We never charge large amounts at once—only your monthly package fee. Cancel anytime!
+                    </p>
+                </details>
+
+                <details class="clay-card p-6 group cursor-pointer bg-white">
+                    <summary class="font-bold text-lg list-none flex justify-between items-center text-slate-800">
+                        <span data-i18n="faq_2_q">What happens if I finish my tokens?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-indigo-500"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="faq_2_a">
+                        Your tokens reset every 24 hours. If you run out, you can wait for the next day or upgrade your package to Fusion or Quantum.
+                    </p>
+                </details>
+
+                <details class="clay-card p-6 group cursor-pointer bg-white">
+                    <summary class="font-bold text-lg list-none flex justify-between items-center text-slate-800">
+                        <span data-i18n="faq_3_q">Is the AI Counsellor a real person?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-indigo-500"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="faq_3_a">
+                        No, it is a highly advanced AI trained to listen and provide emotional support. It is 100% private and does not save any conversations.
+                    </p>
+                </details>
+
+                <details class="clay-card p-6 group cursor-pointer bg-white">
+                    <summary class="font-bold text-lg list-none flex justify-between items-center text-slate-800">
+                        <span data-i18n="faq_4_q">Can I use it on my phone?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-indigo-500"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="faq_4_a">
+                        Yes! නැණ AI is fully mobile-responsive. It works perfectly on smartphones, tablets, and laptops without needing to download an app.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: TESTIMONIALS -->
+    <section class="py-20 bg-white/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-black text-center mb-12" data-i18n="testi_title">What Students Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="clay-card p-6 hover:bg-white transition-colors">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-600">K</div>
+                        <div>
+                            <div class="font-bold">Kasun P.</div>
+                            <div class="text-xs text-slate-500">Grade 11 Student</div>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 italic">"Maths was so hard for me. නැණ AI explained Geometry in Sinhala, and finally, I understood it! My marks went from 45 to 78."</p>
+                    <div class="flex text-yellow-400 mt-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="clay-card p-6 hover:bg-white transition-colors">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center font-bold text-pink-600">S</div>
+                        <div>
+                            <div class="font-bold">Sanduni D.</div>
+                            <div class="text-xs text-slate-500">A/L Bio Stream</div>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 italic">"The Map Marking game helped me memorize all the locations for Geography. The Short Notes are also a lifesaver!"</p>
+                    <div class="flex text-yellow-400 mt-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="clay-card p-6 hover:bg-white transition-colors">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600">M</div>
+                        <div>
+                            <div class="font-bold">Mohamed F.</div>
+                            <div class="text-xs text-slate-500">Grade 10 Student</div>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 italic">"I use the AI Counsellor when I feel stressed about exams. It's really nice to have someone to talk to who doesn't judge."</p>
+                    <div class="flex text-yellow-400 mt-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: FOOTER -->
+    <footer class="bg-white pt-16 pb-8 border-t border-slate-200 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/nenaai-90471.firebasestorage.app/o/branding%2Flogo192.png?alt=media&token=9f478070-a4a1-4203-9da6-00ec7a75a2f9" alt="Nana AI Logo" class="w-8 h-8 rounded-lg">
+                        <span class="text-2xl font-black text-slate-800">නැණ AI</span>
+                    </div>
+                    <p class="text-slate-500 mb-6 max-w-sm" data-i18n="footer_desc">
+                        Providing world-class AI education for the future generation of Sri Lanka. Notebooks, Quizzes, Notes, and Guidance all in one place.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://wa.me/94772997270" class="clay-btn-whatsapp px-4 py-2 flex items-center gap-2 font-bold no-underline text-sm md:text-base">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-4" data-i18n="footer_links">Quick Links</h4>
+                    <ul class="space-y-2 text-slate-500">
+                        <li><a href="#" class="hover:text-indigo-600">Home</a></li>
+                        <li><a href="#features" class="hover:text-indigo-600">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-indigo-600">Pricing</a></li>
+                        <li><a href="#notebooks" class="hover:text-indigo-600">Notebooks</a></li>
+                        <li><a href="https://nenaai.tech/" class="hover:text-indigo-600">Login</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-4" data-i18n="footer_contact">Contact Us</h4>
+                    <ul class="space-y-2 text-slate-500">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            hello@nenaai.tech
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                            +94 77 299 7270
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            Colombo, Sri Lanka
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-8 text-center text-slate-400 text-sm font-semibold">
+                &copy; 2025 නැණ AI Education Platform. Made with ❤️ in Sri Lanka.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC (Translations & Chat Simulation) -->
+    <script>
+        lucide.createIcons();
+
+        // --- TRANSLATION DATA ---
+        const translations = {
+            en: {
+                brand_name: "නැණ AI Platform",
+                nav_features: "Features",
+                nav_notebooks: "Notebooks",
+                nav_pricing: "Pricing",
+                nav_faq: "FAQ",
+                btn_get_started: "Get Started",
+                hero_badge: "Unlock Your True Potential",
+                hero_title_1: "Don't Just Study.",
+                hero_title_2: "Master It.",
+                hero_desc_main: "\"Exam එකට බය වෙන්න එපා. අපි ඉන්නවනේ.\"",
+                hero_desc_sub: "Exam stress is real. But you don't have to face it alone. නැණ AI is your personal mentor that turns \"I can't\" into \"I did it\". Let's crush those exams together.",
+                btn_view_plans: "Start Your Journey",
+                btn_watch_video: "See the Magic",
+                video_title: "See නැණ AI in Action",
+                video_subtitle: "Watch how thousands of students are improving their grades in just minutes a day.",
+                feat_main_title: "More Than Just an App.<br>It's Your Success Partner.",
+                
+                f1_title: "The Smartest AI Assistant",
+                f1_desc: "Stuck on a Physics problem at 11 PM? Just take a photo or speak to Nana. Our AI analyzes your question and breaks it down into simple steps using local syllabus standards.",
+                f1_p1: "Understand Singlish voice commands",
+                f1_p2: "Upload photos of handwritten sums",
+                
+                f2_title: "Your Digital Brain",
+                f2_desc: "Forget messy books. නැණ AI brings you the ultimate Digital Notebook. Record your teacher's voice, and let AI transcribe and summarize it for you automatically.",
+                f2_p1: "Generate Mind Maps instantly",
+                f2_p2: "Auto-create Flashcards for revision",
+                
+                f3_title: "Gamified Learning",
+                f3_desc: "Learning Geography shouldn't be boring. Play our interactive Map Marking game to master the Sri Lankan and World maps for O/L exams.",
+                f3_p1: "Structured Paper AI Marking",
+                f3_p2: "Challenge Mode: Beat the Clock",
+
+                f4_title: "Your Private Safe Space",
+                f4_desc: "Exams are stressful. Life is hard. Talk to your AI Counsellor anytime. It's a judgment-free zone where nothing is saved.",
+                f4_p1: "100% Private & Anonymous",
+                f4_p2: "Chats are auto-deleted",
+                f4_p3: "Available 24/7 for emotional support",
+
+                price_title: "Monthly Plans",
+                price_desc: "Premium AI education. All features included in every package. Choose based on your Token Usage need.",
+                price_note_1: "Transparent & Secure Payments",
+                price_note_2: "We never charge large upfront fees. You only pay the monthly subscription shown above. <br> <strong>Cancel anytime. No hidden charges.</strong>",
+                testi_title: "What Students Say",
+                
+                faq_title: "Frequently Asked Questions",
+                faq_1_q: "How do I pay for the package?",
+                faq_1_a: "You can easily subscribe using any Bank Card (Visa/Master). We never charge large amounts at once—only your monthly package fee. Cancel anytime!",
+                faq_2_q: "What happens if I finish my tokens?",
+                faq_2_a: "Your tokens reset every 24 hours. If you run out, you can wait for the next day or upgrade your package.",
+                faq_3_q: "Is the AI Counsellor a real person?",
+                faq_3_a: "No, it is a highly advanced AI trained to listen and provide emotional support. It is 100% private.",
+                faq_4_q: "Can I use it on my phone?",
+                faq_4_a: "Yes! නැණ AI is fully mobile-responsive. It works perfectly on smartphones, tablets, and laptops.",
+
+                footer_desc: "Providing world-class AI education for the future generation of Sri Lanka. Notebooks, Quizzes, Notes, and Guidance all in one place.",
+                footer_links: "Quick Links",
+                footer_contact: "Contact Us"
+            },
+            si: {
+                brand_name: "නැණ AI Platform",
+                nav_features: "විශේෂාංග",
+                nav_notebooks: "පොත්",
+                nav_pricing: "මිල ගණන්",
+                nav_faq: "ගැටළු",
+                btn_get_started: "ආරම්භ කරන්න",
+                hero_badge: "A/L, O/L ගොඩදාන ලේසිම විදිහ",
+                hero_title_1: "නිකන් පාඩම් කරලා වැඩක් නෑ.",
+                hero_title_2: "ගොඩදාමුද?",
+                hero_desc_main: "\"Exam එකට බය වෙන්න එපා. අපි ඉන්නවනේ.\"",
+                hero_desc_sub: "Class ගිහින්, Notes ලියලා එපා වෙලාද? තේරෙන්නේ නැති දේවල් කියලා දෙන්න කවුරුත් නැද්ද? නැණ AI එකට එන්න. ඔයාගේ භාෂාවෙන්, ඔයාට ඕන වෙලාවට, ඕනම දෙයක් කියලා දෙන ඔයාගේම Personal Teacher.",
+                btn_view_plans: "දැන්ම පටන් ගමු",
+                btn_watch_video: "කොහොමද කරන්නේ?",
+                video_title: "නැණ AI ක්‍රියාත්මක වන අයුරු",
+                video_subtitle: "දිනකට මිනිත්තු කිහිපයකින් දහස් ගණනක් සිසුන් තම ලකුණු වැඩි කරගන්නා ආකාරය නරඹන්න.",
+                feat_main_title: "නිකන්ම App එකක් නෙමෙයි.<br>ඔබේ ජයග්‍රහණයේ සහකරු.",
+
+                f1_title: "බුද්ධිමත්ම AI සහායකයා",
+                f1_desc: "රෑ 11ට ගණන් පාඩම හිර වුනාද? ෆොටෝ එකක් ගහලා Nana ගෙන් අහන්න. අපේ AI එය පියවරෙන් පියවර සරලව සිංහලෙන් කියලා දෙනවා.",
+                f1_p1: "Singlish කටහඬ විධාන තේරුම් ගනී",
+                f1_p2: "අතින් ලියූ ගණන් වල ඡායාරූප කියවයි",
+                
+                f2_title: "ඔබේ Digital මොළය",
+                f2_desc: "පොත් ගොඩවල් ඕන නෑ. ගුරුවරයා උගන්වන දේ Record කරන්න. නැණ AI එය ස්වයංක්‍රීයව ලියා, සාරාංශ කර දෙනවා.",
+                f2_p1: "ක්ෂණිකව Mind Maps සාදන්න",
+                f2_p2: "පාඩම් කිරීමට Flashcards සාදන්න",
+                
+                f3_title: "ක්‍රීඩාවක් ලෙස ඉගෙනුම",
+                f3_desc: "Geography පාඩම දැන් කම්මැලි නෑ. O/L සිතියම් ලකුණු කිරීම ක්‍රීඩාවක් වගේ ඉගෙන ගන්න.",
+                f3_p1: "ව්‍යුහගත රචනා AI මගින් ලකුණු කිරීම",
+                f3_p2: "Challenge Mode: කාලය සමඟ සටනක්",
+
+                f4_title: "ඔබේ පුද්ගලික මිතුරා",
+                f4_desc: "විභාගය ගැන බයද? ප්‍රශ්න වැඩිද? ඕනෑම වෙලාවක AI Counsellor එක්ක කතා කරන්න. මෙය 100% රහසිගතයි.",
+                f4_p1: "100% රහසිගතයි & නිර්නාමිකයි",
+                f4_p2: "Chat ස්වයංක්‍රීයව මැකී යයි",
+                f4_p3: "24/7 මානසික සහාය සඳහා",
+
+                price_title: "මාසික ගාස්තු",
+                price_desc: "සියලුම පහසුකම් සෑම පැකේජයකම අන්තර්ගතයි. ඔබට අවශ්‍ය AI Token ප්‍රමාණය අනුව තෝරාගන්න.",
+                price_note_1: "විශ්වාසවන්ත ගෙවීම් ක්‍රම",
+                price_note_2: "ඔයාට Visa, Master Card මගින් ගෙවීම් කරන්න පුලුවන්. <br> <strong>ඔයාට කැමති වෙලාවක මේක නවත්වන්න (Cancel) පුලුවන්.</strong>",
+                testi_title: "සිසුන් පවසන දේ",
+
+                faq_title: "නිතර අසන ප්‍රශ්න",
+                faq_1_q: "මුදල් ගෙවන්නේ කෙසේද?",
+                faq_1_a: "ඔයාට Visa, Master Card හෝ මගින් ගෙවීම් කරන්න පුලුවන්. අපි කවදාවත් ලොකු ගණන් එකපාර අය කරන්නේ නෑ. මාසික ගාස්තුව විතරයි. ඔයාට කැමති වෙලාවක මේක නවත්වන්න (Cancel) පුලුවන්.",
+                faq_2_q: "Token ඉවර වුනොත් මොකද වෙන්නේ?",
+                faq_2_a: "Token සෑම පැය 24කට වරක් අලුත් වේ. හදිසි නම් Package එක Upgrade කරගන්න.",
+                faq_3_q: "AI Counsellor ඇත්ත කෙනෙක්ද?",
+                faq_3_a: "නැහැ, මෙය දියුණු AI තාක්ෂණයකි. එය ඔබව විනිශ්චය නොකරයි, රහස් එළියට යන්නේ නැත.",
+                faq_4_q: "Phone එකෙන් පාවිච්චි කරන්න පුලුවන්ද?",
+                faq_4_a: "ඔව්! නැණ AI ඕනෑම Phone එකක, Tablet එකක හෝ Laptop එකක හොඳින් වැඩ කරයි.",
+
+                footer_desc: "ශ්‍රී ලාංකීය සිසුන් සඳහාම නිපදවූ සම්පූර්ණ AI සහායකයා. කෙටි සටහන්, ප්‍රශ්න පත්‍ර, සිතියම් සහ උපදේශනය එකම තැනකින්.",
+                footer_links: "යොමු",
+                footer_contact: "අමතන්න"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function initLang() {
+            const savedLang = localStorage.getItem('nana_lang');
+            if (savedLang) {
+                currentLang = savedLang;
+                updateContent();
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'si' : 'en';
+            localStorage.setItem('nana_lang', currentLang);
+            const btn = document.getElementById('lang-display');
+            btn.style.opacity = '0';
+            setTimeout(() => {
+                updateContent();
+                btn.style.opacity = '1';
+            }, 200);
+        }
+
+        function updateContent() {
+            const data = translations[currentLang];
+            const displayBtn = document.getElementById('lang-display');
+            displayBtn.innerText = currentLang === 'en' ? '🇺🇸 EN' : '🇱🇰 SI';
+
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (data[key]) {
+                    el.style.opacity = 0.5;
+                    setTimeout(() => {
+                        el.innerHTML = data[key]; 
+                        el.style.opacity = 1;
+                    }, 150);
+                }
+            });
+        }
+
+        // --- HERO CHAT SIMULATION ---
+        const chatData = [
+            {
+                user: "Can you explain Newton's Third Law in Sinhala?",
+                ai: "නිව්ටන්ගේ තුන්වන නියමය:<br>සෑම ක්‍රියාවකටම විශාලත්වයෙන් සමාන වූත්, දිශාවෙන් ප්‍රතිවිරුද්ධ වූත් ප්‍රතික්‍රියාවක් ඇත."
+            },
+            {
+                user: "What is the capital of France?",
+                ai: "The capital of France is <b>Paris</b>."
+            },
+            {
+                user: "මට Photosynthesis කියල දෙන්න",
+                ai: "ප්‍රභාසංස්ලේෂණය (Photosynthesis) යනු ශාක සූර්යාලෝකය භාවිතා කර ආහාර නිෂ්පාදනය කරන ක්‍රියාවලියයි."
+            }
+        ];
+
+        let chatIndex = 0;
+
+        function startChatSimulation() {
+            const container = document.getElementById('chat-simulation-container');
+            runChatCycle(container);
+        }
+
+        function runChatCycle(container) {
+            // Clear previous
+            container.innerHTML = '';
+            const data = chatData[chatIndex];
+
+            // 1. User Message (Delay: 500ms)
+            setTimeout(() => {
+                const userMsg = document.createElement('div');
+                userMsg.className = "flex gap-3 animate-fade-in-up";
+                userMsg.innerHTML = `
+                    <div class="w-10 h-10 rounded-full bg-slate-200 border-2 border-white flex-shrink-0 flex items-center justify-center overflow-hidden">
+                        <i data-lucide="user" class="w-6 h-6 text-slate-400"></i>
+                    </div>
+                    <div class="clay-inset p-3 rounded-tl-none rounded-2xl text-slate-700 font-medium text-sm max-w-[85%]">
+                        ${data.user}
+                    </div>
+                `;
+                container.appendChild(userMsg);
+                lucide.createIcons();
+
+                // 2. Typing Indicator (Delay: 1500ms)
+                setTimeout(() => {
+                    const typing = document.createElement('div');
+                    typing.id = 'typing-indicator';
+                    typing.className = "flex gap-3 flex-row-reverse animate-fade-in-up";
+                    typing.innerHTML = `
+                        <div class="w-10 h-10 rounded-full bg-indigo-600 border-2 border-white flex-shrink-0 flex items-center justify-center text-white text-xs font-bold shadow-md">AI</div>
+                        <div class="bg-indigo-50 border border-indigo-100 p-3 rounded-tr-none rounded-2xl flex items-center gap-1 shadow-sm">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    `;
+                    container.appendChild(typing);
+
+                    // 3. AI Message (Delay: 3500ms)
+                    setTimeout(() => {
+                        const typingEl = document.getElementById('typing-indicator');
+                        if(typingEl) typingEl.remove();
+
+                        const aiMsg = document.createElement('div');
+                        aiMsg.className = "flex gap-3 flex-row-reverse animate-fade-in-up";
+                        aiMsg.innerHTML = `
+                            <div class="w-10 h-10 rounded-full bg-indigo-600 border-2 border-white flex-shrink-0 flex items-center justify-center text-white text-xs font-bold shadow-md">AI</div>
+                            <div class="bg-indigo-600 text-white p-3 rounded-tr-none rounded-2xl text-sm shadow-md max-w-[90%]">
+                                ${data.ai}
+                            </div>
+                        `;
+                        container.appendChild(aiMsg);
+
+                        // 4. Next Cycle (Delay: 7000ms)
+                        setTimeout(() => {
+                            chatIndex = (chatIndex + 1) % chatData.length;
+                            runChatCycle(container);
+                        }, 4000);
+
+                    }, 2000); // Typing duration
+                }, 1000); // Thinking gap
+            }, 500); // Initial delay
+        }
+    </script>
+</body>
+</html>
