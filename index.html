@@ -85,11 +85,13 @@
                         'bounce-slight': 'bounce 3s infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                        'slide-down': 'slideDown 0.3s ease-out forwards',
                     },
                     keyframes: {
                         float: { "0%, 100%": { transform: "translateY(0) rotate(0deg)" }, "50%": { transform: "translateY(-20px) rotate(5deg)" } },
                         'float-reverse': { "0%, 100%": { transform: "translateY(0) rotate(0deg)" }, "50%": { transform: "translateY(20px) rotate(-5deg)" } },
-                        fadeInUp: { "0%": { opacity: 0, transform: "translateY(10px)" }, "100%": { opacity: 1, transform: "translateY(0)" } }
+                        fadeInUp: { "0%": { opacity: 0, transform: "translateY(10px)" }, "100%": { opacity: 1, transform: "translateY(0)" } },
+                        slideDown: { "0%": { opacity: 0, transform: "translateY(-20px)" }, "100%": { opacity: 1, transform: "translateY(0)" } }
                     }
                 }
             }
@@ -105,7 +107,10 @@
             border: 2px solid rgba(255,255,255,0.4);
             transition: all 0.3s ease;
         }
-        .clay-card:hover { transform: translateY(-5px); box-shadow: 12px 12px 20px #d1d9e6, -12px -12px 20px #ffffff; }
+        /* Adjusted hover for mobile to prevent sticky hover states */
+        @media (hover: hover) {
+            .clay-card:hover { transform: translateY(-5px); box-shadow: 12px 12px 20px #d1d9e6, -12px -12px 20px #ffffff; }
+        }
         .clay-inset {
             background: #f0f4f8;
             border-radius: 20px;
@@ -157,118 +162,159 @@
         @keyframes typing { 0%, 100% { opacity: 0.2; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1); } }
         .typing-dot:nth-child(1) { animation-delay: -0.32s; }
         .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        /* Mobile Menu Transitions */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="text-slate-700 overflow-x-hidden" onload="initLang(); startChatSimulation()">
 
-    <!-- Marshmallow Floating Social Media Buttons -->
+    <!-- Marshmallow Floating Social Media Buttons (Desktop) -->
     <div class="floating-socials hidden md:flex">
         <a href="https://wa.me/94772997270" class="marshmallow-icon bg-whatsapp" title="Chat on WhatsApp"><i data-lucide="message-circle"></i></a>
-        <a href="#" class="marshmallow-icon bg-facebook" title="Facebook"><i data-lucide="facebook"></i></a>
-        <a href="#" class="marshmallow-icon bg-instagram" title="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://www.facebook.com/share/1U8vH5Y19V/?mibextid=wwXIfr" class="marshmallow-icon bg-facebook" title="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://www.instagram.com/slnenaai?igsh=MWc4MXFidXg1bjU2NA%3D%3D&utm_source=qr" class="marshmallow-icon bg-instagram" title="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://www.tiktok.com/@slnenaai?_r=1&_t=ZS-92PdL2jMfeD" class="marshmallow-icon bg-tiktok" title="TikTok"><i data-lucide="video"></i></a>
     </div>
 
     <!-- SECTION 1: NAVIGATION -->
-    <nav class="fixed w-full z-50 transition-all duration-300 px-4 py-4">
-        <div class="container mx-auto clay-card !rounded-2xl px-6 py-3 flex justify-between items-center bg-white/80 backdrop-blur-sm">
-            <div class="flex items-center gap-3">
-                <img src="https://firebasestorage.googleapis.com/v0/b/nenaai-90471.firebasestorage.app/o/branding%2Flogo192.png?alt=media&token=9f478070-a4a1-4203-9da6-00ec7a75a2f9" alt="Nana AI Logo" class="w-10 h-10 rounded-xl shadow-lg" loading="lazy">
-                <span class="text-xl md:text-2xl font-black text-slate-800 tracking-tight" data-i18n="brand_name">නැණ AI</span>
-            </div>
-            
-            <div class="hidden lg:flex items-center gap-6 font-bold text-slate-600 text-sm">
-                <a href="#features" class="hover:text-indigo-600 transition-colors" data-i18n="nav_features">Features</a>
-                <a href="#notebooks" class="hover:text-indigo-600 transition-colors" data-i18n="nav_notebooks">Notebooks</a>
-                <a href="#pricing" class="hover:text-indigo-600 transition-colors" data-i18n="nav_pricing">Pricing</a>
-                <a href="#faq" class="hover:text-indigo-600 transition-colors" data-i18n="nav_faq">FAQ</a>
+    <nav class="fixed w-full z-50 transition-all duration-300 px-2 md:px-4 py-2 md:py-4">
+        <div class="container mx-auto clay-card !rounded-2xl px-4 md:px-6 py-3 bg-white/80 backdrop-blur-sm relative">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2 md:gap-3">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/nenaai-90471.firebasestorage.app/o/branding%2Flogo192.png?alt=media&token=9f478070-a4a1-4203-9da6-00ec7a75a2f9" alt="Nana AI Logo" class="w-8 h-8 md:w-10 md:h-10 rounded-xl shadow-lg" loading="lazy">
+                    <span class="text-lg md:text-2xl font-black text-slate-800 tracking-tight" data-i18n="brand_name">නැණ AI</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-6 font-bold text-slate-600 text-sm">
+                    <a href="#features" class="hover:text-indigo-600 transition-colors" data-i18n="nav_features">Features</a>
+                    <a href="#notebooks" class="hover:text-indigo-600 transition-colors" data-i18n="nav_notebooks">Notebooks</a>
+                    <a href="#pricing" class="hover:text-indigo-600 transition-colors" data-i18n="nav_pricing">Pricing</a>
+                    <a href="#faq" class="hover:text-indigo-600 transition-colors" data-i18n="nav_faq">FAQ</a>
+                </div>
+
+                <div class="flex items-center gap-2 md:gap-4">
+                    <button onclick="toggleLanguage()" class="clay-inset px-3 py-1.5 md:px-4 md:py-2 rounded-full font-bold text-xs md:text-sm flex items-center gap-2 hover:bg-slate-200 transition-colors">
+                        <span id="lang-display">🇺🇸 EN</span>
+                        <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                    </button>
+                    <a href="https://nenaai.tech/" rel="nofollow" class="clay-btn-primary px-4 py-2 md:px-6 md:py-2.5 font-bold text-xs md:text-sm hidden sm:block" data-i18n="btn_get_started">Get Started</a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-600">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
             </div>
 
-            <div class="flex items-center gap-4">
-                <button onclick="toggleLanguage()" class="clay-inset px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-slate-200 transition-colors">
-                    <span id="lang-display">🇺🇸 EN</span>
-                    <i data-lucide="refresh-cw" class="w-3 h-3"></i>
-                </button>
-                <a href="https://nenaai.tech/" rel="nofollow" class="clay-btn-primary px-6 py-2.5 font-bold text-sm" data-i18n="btn_get_started">Get Started</a>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="lg:hidden flex flex-col gap-4 pt-4 pb-2 text-center text-sm font-bold text-slate-600 border-t border-slate-100 mt-2">
+                <a href="#features" onclick="toggleMobileMenu()" class="hover:text-indigo-600 py-2" data-i18n="nav_features">Features</a>
+                <a href="#notebooks" onclick="toggleMobileMenu()" class="hover:text-indigo-600 py-2" data-i18n="nav_notebooks">Notebooks</a>
+                <a href="#pricing" onclick="toggleMobileMenu()" class="hover:text-indigo-600 py-2" data-i18n="nav_pricing">Pricing</a>
+                <a href="#faq" onclick="toggleMobileMenu()" class="hover:text-indigo-600 py-2" data-i18n="nav_faq">FAQ</a>
+                <a href="https://nenaai.tech/" class="clay-btn-primary px-6 py-3 font-bold text-white mx-auto w-full max-w-xs" data-i18n="btn_get_started">Get Started</a>
+                
+                <!-- Mobile Socials -->
+                <div class="flex justify-center gap-4 mt-2">
+                    <a href="https://wa.me/94772997270" class="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shadow-md"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                    <a href="https://www.facebook.com/share/1U8vH5Y19V/?mibextid=wwXIfr" class="w-10 h-10 rounded-xl bg-[#1877F2] text-white flex items-center justify-center shadow-md"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="https://www.instagram.com/slnenaai?igsh=MWc4MXFidXg1bjU2NA%3D%3D&utm_source=qr" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-400 to-purple-600 text-white flex items-center justify-center shadow-md"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://www.tiktok.com/@slnenaai?_r=1&_t=ZS-92PdL2jMfeD" class="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center shadow-md"><i data-lucide="video" class="w-5 h-5"></i></a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- SECTION 2: HERO SECTION -->
-    <header class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
-        <div class="block-3d w-24 h-24 top-32 left-[5%] animate-float-slow text-indigo-500 text-5xl opacity-80">∑</div>
-        <div class="block-3d w-20 h-20 bottom-32 right-[10%] animate-float-reverse text-pink-500 text-4xl opacity-80">?</div>
+    <header class="relative pt-32 pb-16 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- 3D Blocks (Hidden on very small screens to prevent overlap) -->
+        <div class="block-3d w-16 h-16 md:w-24 md:h-24 top-24 md:top-32 left-[5%] animate-float-slow text-indigo-500 text-3xl md:text-5xl opacity-60 md:opacity-80 hidden sm:flex">∑</div>
+        <div class="block-3d w-14 h-14 md:w-20 md:h-20 bottom-20 md:bottom-32 right-[5%] md:right-[10%] animate-float-reverse text-pink-500 text-2xl md:text-4xl opacity-60 md:opacity-80 hidden sm:flex">?</div>
         
         <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                <!-- Text Content -->
                 <div class="w-full lg:w-1/2 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-indigo-100 shadow-sm mb-6 animate-bounce-slight">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white border border-indigo-100 shadow-sm mb-6 animate-bounce-slight">
                         <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                        <span class="text-sm font-bold text-slate-600" data-i18n="hero_badge">Unlock Your True Potential</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-600" data-i18n="hero_badge">Unlock Your True Potential</span>
                     </div>
 
-                    <h1 class="text-5xl lg:text-7xl font-black text-slate-800 mb-6 leading-tight">
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-black text-slate-800 mb-4 md:mb-6 leading-tight">
                         <span data-i18n="hero_title_1">Don't Just Study.</span> <br>
                         <span class="text-gradient" data-i18n="hero_title_2">Master It.</span>
                     </h1>
                     
-                    <p class="text-xl text-slate-600 mb-8 font-bold leading-relaxed">
+                    <p class="text-lg md:text-xl text-slate-600 mb-8 font-bold leading-relaxed px-2 md:px-0">
                         <span data-i18n="hero_desc_main">"Exam එකට බය වෙන්න එපා. අපි ඉන්නවනේ."</span> <br class="hidden lg:block">
-                        <span class="font-normal text-lg" data-i18n="hero_desc_sub">Exam stress is real. But you don't have to face it alone. Nena AI is your personal mentor that turns "I can't" into "I did it". Let's crush those exams together.</span>
+                        <span class="font-normal text-base md:text-lg block mt-2" data-i18n="hero_desc_sub">Exam stress is real. But you don't have to face it alone. Nena AI is your personal mentor that turns "I can't" into "I did it". Let's crush those exams together.</span>
                     </p>
 
-                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mt-8">
-                        <a href="#pricing" class="clay-btn-primary w-full sm:w-auto px-8 py-4 text-lg font-bold flex items-center justify-center gap-2 hover:scale-105 transition-transform">
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mt-4 md:mt-8">
+                        <a href="#pricing" class="clay-btn-primary w-full sm:w-auto px-8 py-3 md:py-4 text-base md:text-lg font-bold flex items-center justify-center gap-2 hover:scale-105 transition-transform">
                             <span data-i18n="btn_view_plans">Start Your Journey</span>
                             <i data-lucide="zap" class="w-5 h-5"></i>
                         </a>
-                        <a href="#video-demo" class="clay-card w-full sm:w-auto px-8 py-4 text-slate-700 font-bold flex items-center justify-center gap-2 hover:bg-white">
+                        <a href="#video-demo" class="clay-card w-full sm:w-auto px-8 py-3 md:py-4 text-slate-700 font-bold flex items-center justify-center gap-2 hover:bg-white text-base md:text-lg">
                             <i data-lucide="play-circle" class="w-5 h-5 text-indigo-500"></i>
                             <span data-i18n="btn_watch_video">See the Magic</span>
                         </a>
                     </div>
                 </div>
 
-                <div class="w-full lg:w-1/2 relative perspective-1000">
-                    <div class="clay-card p-6 relative z-20 transform rotate-y-12 rotate-x-6 transition-transform hover:rotate-0 duration-500 bg-white/60 backdrop-blur-md min-h-[350px] flex flex-col">
+                <!-- Chat Demo -->
+                <div class="w-full lg:w-1/2 relative perspective-1000 mt-8 lg:mt-0">
+                    <div class="clay-card p-4 md:p-6 relative z-20 transform lg:rotate-y-12 lg:rotate-x-6 transition-transform hover:rotate-0 duration-500 bg-white/60 backdrop-blur-md min-h-[300px] md:min-h-[350px] flex flex-col">
                         <div class="flex items-center justify-between mb-4 border-b border-slate-200 pb-2">
                             <div class="flex gap-2">
-                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                                <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-400"></div>
+                                <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-400"></div>
                             </div>
                             <div class="text-xs font-bold text-slate-400">AI Personal Tutor</div>
                         </div>
-                        <div class="space-y-4 flex-grow relative" id="chat-simulation-container"></div>
+                        <div class="space-y-4 flex-grow relative overflow-y-auto max-h-[300px]" id="chat-simulation-container"></div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- SECTION 2.5: DREAM GOAL PATH (NEW) -->
-    <section class="py-20 bg-white relative">
+    <!-- SECTION 2.5: DREAM GOAL PATH -->
+    <section class="py-16 md:py-20 bg-white relative">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl lg:text-4xl font-black text-slate-800 mb-6" data-i18n="dream_title">Imagine Your Results Day</h2>
-            <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-12" data-i18n="dream_desc">
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-12" data-i18n="dream_desc">
                 The A-passes. The pride in your parents' eyes. The University entrance. It's not just a dream. With Nena AI, it's a predictable destination. Here is how we get you there.
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
                 <div class="relative clay-card p-6 border-none shadow-none bg-transparent hover:transform-none hover:shadow-none">
-                    <div class="w-20 h-20 mx-auto bg-red-100 rounded-full flex items-center justify-center text-red-600 mb-6 font-black text-3xl border-4 border-white shadow-lg">1</div>
+                    <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-red-100 rounded-full flex items-center justify-center text-red-600 mb-6 font-black text-2xl md:text-3xl border-4 border-white shadow-lg">1</div>
                     <h3 class="text-xl font-bold text-slate-800 mb-3" data-i18n="step1_title">Identify Weakness</h3>
                     <p class="text-slate-600 leading-relaxed" data-i18n="step1_desc">Don't know Physics? Or Map Marking? The AI finds exactly what you don't know.</p>
                 </div>
                 <!-- Step 2 -->
                 <div class="relative clay-card p-6 border-none shadow-none bg-transparent hover:transform-none hover:shadow-none">
-                    <div class="w-20 h-20 mx-auto bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mb-6 font-black text-3xl border-4 border-white shadow-lg">2</div>
+                    <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mb-6 font-black text-2xl md:text-3xl border-4 border-white shadow-lg">2</div>
                     <h3 class="text-xl font-bold text-slate-800 mb-3" data-i18n="step2_title">Fix It Instantly</h3>
                     <p class="text-slate-600 leading-relaxed" data-i18n="step2_desc">No waiting for next week's class. Ask the AI Tutor, generate a Short Note, and understand it NOW.</p>
                 </div>
                 <!-- Step 3 -->
                 <div class="relative clay-card p-6 border-none shadow-none bg-transparent hover:transform-none hover:shadow-none">
-                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6 font-black text-3xl border-4 border-white shadow-lg">3</div>
+                    <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6 font-black text-2xl md:text-3xl border-4 border-white shadow-lg">3</div>
                     <h3 class="text-xl font-bold text-slate-800 mb-3" data-i18n="step3_title">Win the Exam</h3>
                     <p class="text-slate-600 leading-relaxed" data-i18n="step3_desc">Practice with AI marked papers. Walk into the exam hall with 100% confidence.</p>
                 </div>
@@ -277,14 +323,14 @@
     </section>
 
     <!-- SECTION 3: VIDEO DEMO -->
-    <section id="video-demo" class="py-20 bg-white/50 relative overflow-hidden">
-        <div class="block-3d w-16 h-16 top-10 left-10 animate-float-medium text-green-500 text-2xl opacity-60">A+</div>
+    <section id="video-demo" class="py-16 md:py-20 bg-white/50 relative overflow-hidden">
+        <div class="block-3d w-12 h-12 md:w-16 md:h-16 top-10 left-6 md:left-10 animate-float-medium text-green-500 text-xl md:text-2xl opacity-60">A+</div>
         <div class="container mx-auto px-4 max-w-5xl relative z-10">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-black text-slate-800" data-i18n="video_title">See නැණ AI in Action</h2>
-                <p class="text-slate-600 mt-2" data-i18n="video_subtitle">Watch how thousands of students are improving their grades in just minutes a day.</p>
+                <p class="text-slate-600 mt-2 text-sm md:text-base" data-i18n="video_subtitle">Watch how thousands of students are improving their grades in just minutes a day.</p>
             </div>
-            <div class="clay-card p-4 md:p-6 bg-white transform hover:scale-[1.01] transition-transform duration-500">
+            <div class="clay-card p-3 md:p-6 bg-white transform hover:scale-[1.01] transition-transform duration-500">
                 <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-inner clay-inset relative group">
                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0" title="Nana AI Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     <div class="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition-colors pointer-events-none"></div>
@@ -294,18 +340,18 @@
     </section>
 
     <!-- SECTION 4: DETAILED FEATURES -->
-    <section id="features" class="py-24 overflow-hidden relative">
+    <section id="features" class="py-16 lg:py-24 overflow-hidden relative">
         <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-20">
-                <span class="text-pink-500 font-bold tracking-wider uppercase text-sm bg-pink-50 px-4 py-1 rounded-full border border-pink-100">Why We Are Different</span>
-                <h2 class="text-4xl md:text-5xl font-black text-slate-800 mt-4 leading-tight" data-i18n="feat_main_title">More Than Just an App.<br>It's Your Success Partner.</h2>
+            <div class="text-center mb-16 md:mb-20">
+                <span class="text-pink-500 font-bold tracking-wider uppercase text-xs md:text-sm bg-pink-50 px-4 py-1 rounded-full border border-pink-100">Why We Are Different</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 mt-4 leading-tight" data-i18n="feat_main_title">More Than Just an App.<br>It's Your Success Partner.</h2>
             </div>
 
             <!-- 1. AI Assistant -->
-            <div class="flex flex-col lg:flex-row items-start gap-12 mb-24">
+            <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-12 mb-16 lg:mb-24">
                 <div class="w-full lg:w-1/2">
-                    <div class="clay-card p-8 bg-indigo-50/50 border-indigo-100 h-full">
-                        <div class="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-indigo-300"><i data-lucide="bot" class="w-8 h-8"></i></div>
+                    <div class="clay-card p-6 lg:p-8 bg-indigo-50/50 border-indigo-100 h-full">
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-indigo-300"><i data-lucide="bot" class="w-8 h-8"></i></div>
                         <h3 class="text-2xl font-black text-slate-800 mb-4" data-i18n="f1_title">The Smartest AI Assistant</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed" data-i18n="f1_desc">Your 24/7 Homework Helper. Ask questions in Sinhala, English, or Singlish.</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -318,8 +364,8 @@
                 </div>
                  <!-- 2. Smart Quizzes & Paper Marker -->
                 <div class="w-full lg:w-1/2">
-                    <div class="clay-card p-8 bg-green-50/50 border-green-100 h-full">
-                         <div class="w-16 h-16 rounded-2xl bg-green-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-green-300"><i data-lucide="check-square" class="w-8 h-8"></i></div>
+                    <div class="clay-card p-6 lg:p-8 bg-green-50/50 border-green-100 h-full">
+                         <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-green-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-green-300"><i data-lucide="check-square" class="w-8 h-8"></i></div>
                         <h3 class="text-2xl font-black text-slate-800 mb-4" data-i18n="f3_title">Smart Quizzes & AI Marking</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed" data-i18n="f3_desc">Structured & MCQ quizzes for every lesson. Get instant feedback.</p>
                         <div class="space-y-3">
@@ -339,10 +385,10 @@
             </div>
 
             <!-- 3. Notebooks & 4. Map Game -->
-            <div class="flex flex-col lg:flex-row items-start gap-12 mb-24">
+            <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-12 mb-16 lg:mb-24">
                 <div class="w-full lg:w-1/2">
-                    <div class="clay-card p-8 bg-pink-50/50 border-pink-100 h-full">
-                        <div class="w-16 h-16 rounded-2xl bg-pink-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-pink-300"><i data-lucide="book-open" class="w-8 h-8"></i></div>
+                    <div class="clay-card p-6 lg:p-8 bg-pink-50/50 border-pink-100 h-full">
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-pink-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-pink-300"><i data-lucide="book-open" class="w-8 h-8"></i></div>
                         <h3 class="text-2xl font-black text-slate-800 mb-4" data-i18n="f2_title">Supercharged Notebooks</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed" data-i18n="f2_desc">More than just text. Record lessons and let AI transcribe them.</p>
                         <ul class="space-y-3 text-sm text-slate-700 font-semibold">
@@ -354,8 +400,8 @@
                     </div>
                 </div>
                  <div class="w-full lg:w-1/2">
-                    <div class="clay-card p-8 bg-blue-50/50 border-blue-100 h-full">
-                         <div class="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-blue-300"><i data-lucide="map" class="w-8 h-8"></i></div>
+                    <div class="clay-card p-6 lg:p-8 bg-blue-50/50 border-blue-100 h-full">
+                         <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-blue-300"><i data-lucide="map" class="w-8 h-8"></i></div>
                         <h3 class="text-2xl font-black text-slate-800 mb-4">O/L Map Marking Game</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed">Master the Sri Lankan and World map for your O/L History exam through play.</p>
                         <div class="relative h-40 w-full bg-blue-100 rounded-xl overflow-hidden clay-inset flex items-center justify-center">
@@ -371,7 +417,7 @@
 
              <!-- 5. AI Counsellor -->
              <div class="max-w-4xl mx-auto">
-                <div class="clay-card p-8 bg-purple-50/50 border-purple-100 flex flex-col md:flex-row items-center gap-8">
+                <div class="clay-card p-6 lg:p-8 bg-purple-50/50 border-purple-100 flex flex-col md:flex-row items-center gap-8">
                     <div class="w-20 h-20 rounded-full bg-purple-600 text-white flex flex-shrink-0 items-center justify-center shadow-lg shadow-purple-300"><i data-lucide="heart-handshake" class="w-10 h-10"></i></div>
                     <div class="flex-grow">
                         <h3 class="text-2xl font-black text-slate-800 mb-2" data-i18n="f4_title">Your Private AI Counsellor</h3>
@@ -387,21 +433,21 @@
     </section>
 
     <!-- SECTION 5: PRICING -->
-    <section id="pricing" class="py-24 relative overflow-hidden bg-white/40">
-        <div class="block-3d w-24 h-24 bottom-10 right-10 animate-float-medium text-pink-500 text-5xl opacity-40">Rs</div>
+    <section id="pricing" class="py-16 md:py-24 relative overflow-hidden bg-white/40">
+        <div class="block-3d w-24 h-24 bottom-10 right-10 animate-float-medium text-pink-500 text-5xl opacity-40 hidden sm:flex">Rs</div>
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-indigo-50 -z-10"></div>
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-red-500 font-bold tracking-wider uppercase text-sm border border-red-200 bg-red-50 px-3 py-1 rounded-full">No Free Mode</span>
-                <h2 class="text-4xl font-black text-slate-800 mt-4 mb-6" data-i18n="price_title">Monthly Plans</h2>
-                <p class="text-lg text-slate-600" data-i18n="price_desc">All features included in every package. <br><strong>Choose based on how much you study.</strong></p>
+                <span class="text-red-500 font-bold tracking-wider uppercase text-xs md:text-sm border border-red-200 bg-red-50 px-3 py-1 rounded-full">No Free Mode</span>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-800 mt-4 mb-6" data-i18n="price_title">Monthly Plans</h2>
+                <p class="text-base md:text-lg text-slate-600" data-i18n="price_desc">All features included in every package. <br><strong>Choose based on how much you study.</strong></p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end mb-12">
                 
                 <!-- SPARK Plan -->
-                <div class="clay-card p-8 relative hover:scale-105 transition-transform bg-white">
+                <div class="clay-card p-6 lg:p-8 relative hover:scale-105 transition-transform bg-white">
                     <h3 class="text-2xl font-black text-slate-700 mb-2">Spark</h3>
                     <div class="text-4xl font-black text-indigo-600 mb-2">Rs. 1,599</div>
                     <div class="text-sm font-bold text-slate-400 mb-6">Monthly Plan</div>
@@ -411,12 +457,12 @@
                         <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Map Marking Game</li>
                         <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Digital Notebooks</li>
                     </ul>
-                    <a href="https://wa.me/94772997270?text=I%20want%20Spark%20Package" rel="nofollow" class="clay-btn-secondary w-full py-3 flex justify-center font-bold">Choose Spark</a>
+                    <a href="https://nenaai.tech/" rel="nofollow" class="clay-btn-secondary w-full py-3 flex justify-center font-bold">Choose Spark</a>
                 </div>
 
                 <!-- FUSION Plan -->
-                <div class="clay-card p-8 relative border-4 border-indigo-500 transform scale-105 z-10 bg-white shadow-xl shadow-indigo-200">
-                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-6 py-1 rounded-full text-sm font-bold shadow-lg">RECOMMENDED</div>
+                <div class="clay-card p-6 lg:p-8 relative border-4 border-indigo-500 transform scale-105 z-10 bg-white shadow-xl shadow-indigo-200">
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-6 py-1 rounded-full text-xs md:text-sm font-bold shadow-lg">RECOMMENDED</div>
                     <h3 class="text-2xl font-black text-slate-800 mb-2">Fusion</h3>
                     <div class="text-5xl font-black text-indigo-600 mb-2">Rs. 2,599</div>
                     <div class="text-sm font-bold text-slate-400 mb-6">Monthly Plan</div>
@@ -425,11 +471,11 @@
                         <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-600"></i> Everything in Spark</li>
                         <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-600"></i> Heavy Usage Limit</li>
                     </ul>
-                    <a href="https://wa.me/94772997270?text=I%20want%20Fusion%20Package" rel="nofollow" class="clay-btn-primary w-full py-4 flex justify-center font-bold shadow-indigo-300">Choose Fusion</a>
+                    <a href="https://nenaai.tech/" rel="nofollow" class="clay-btn-primary w-full py-4 flex justify-center font-bold shadow-indigo-300">Choose Fusion</a>
                 </div>
 
                 <!-- QUANTUM Plan -->
-                <div class="clay-card p-8 relative hover:scale-105 transition-transform bg-white">
+                <div class="clay-card p-6 lg:p-8 relative hover:scale-105 transition-transform bg-white">
                     <h3 class="text-2xl font-black text-pink-600 mb-2">Quantum</h3>
                     <div class="text-4xl font-black text-indigo-600 mb-2">Rs. 4,599</div>
                     <div class="text-sm font-bold text-slate-400 mb-6">Monthly Plan</div>
@@ -438,19 +484,19 @@
                         <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Maximum Power</li>
                         <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Priority Support</li>
                     </ul>
-                    <a href="https://wa.me/94772997270?text=I%20want%20Quantum%20Package" rel="nofollow" class="clay-btn-secondary w-full py-3 flex justify-center font-bold">Choose Quantum</a>
+                    <a href="https://nenaai.tech/" rel="nofollow" class="clay-btn-secondary w-full py-3 flex justify-center font-bold">Choose Quantum</a>
                 </div>
             </div>
             
             <!-- Payment Info Block -->
-            <div class="max-w-4xl mx-auto clay-card p-8 bg-indigo-50/50 text-center border-indigo-200">
-                <h4 class="text-xl font-bold text-slate-800 mb-4" data-i18n="price_note_1">Secure Payments</h4>
+            <div class="max-w-4xl mx-auto clay-card p-6 md:p-8 bg-indigo-50/50 text-center border-indigo-200">
+                <h4 class="text-lg md:text-xl font-bold text-slate-800 mb-4" data-i18n="price_note_1">Secure Payments</h4>
                 <div class="flex flex-wrap justify-center gap-6 text-slate-600 mb-6">
-                    <div class="flex items-center gap-2 font-semibold">
+                    <div class="flex items-center gap-2 font-semibold text-sm md:text-base">
                         <i data-lucide="credit-card" class="w-5 h-5 text-indigo-500"></i> Visa & MasterCard (Debit/Credit)
                     </div>
                 </div>
-                <p class="text-slate-600" data-i18n="price_note_2">
+                <p class="text-sm md:text-base text-slate-600" data-i18n="price_note_2">
                     Pay securely with any Visa or MasterCard. <br>
                     <strong>Cancel anytime. No hidden charges.</strong>
                 </p>
@@ -459,7 +505,7 @@
     </section>
 
     <!-- SECTION 6: TESTIMONIALS (RESTORED) -->
-    <section class="py-20 bg-white/50">
+    <section class="py-16 md:py-20 bg-white/50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-black text-center mb-12" data-i18n="testi_title">What Students Say</h2>
             
@@ -473,7 +519,7 @@
                             <div class="text-xs text-slate-500">Grade 11 Student</div>
                         </div>
                     </div>
-                    <p class="text-slate-600 italic" data-i18n="review_1">"Maths was so hard for me. නැණ AI explained Geometry in Sinhala, and finally, I understood it! My marks went from 45 to 78."</p>
+                    <p class="text-slate-600 italic text-sm md:text-base" data-i18n="review_1">"Maths was so hard for me. නැණ AI explained Geometry in Sinhala, and finally, I understood it! My marks went from 45 to 78."</p>
                     <div class="flex text-yellow-400 mt-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
                 </div>
 
@@ -486,7 +532,7 @@
                             <div class="text-xs text-slate-500">A/L Bio Stream</div>
                         </div>
                     </div>
-                    <p class="text-slate-600 italic" data-i18n="review_2">"Biology syllabus is huge, but the AI Mind Maps made it so easy to remember. The Short Notes feature is a lifesaver for my Chemistry revision!"</p>
+                    <p class="text-slate-600 italic text-sm md:text-base" data-i18n="review_2">"Biology syllabus is huge, but the AI Mind Maps made it so easy to remember. The Short Notes feature is a lifesaver for my Chemistry revision!"</p>
                     <div class="flex text-yellow-400 mt-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
                 </div>
 
@@ -499,7 +545,7 @@
                             <div class="text-xs text-slate-500">Grade 10 Student</div>
                         </div>
                     </div>
-                    <p class="text-slate-600 italic" data-i18n="review_3">"I use the AI Counsellor when I feel stressed about exams. It's really nice to have someone to talk to who doesn't judge."</p>
+                    <p class="text-slate-600 italic text-sm md:text-base" data-i18n="review_3">"I use the AI Counsellor when I feel stressed about exams. It's really nice to have someone to talk to who doesn't judge."</p>
                     <div class="flex text-yellow-400 mt-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
                 </div>
             </div>
@@ -507,9 +553,9 @@
     </section>
 
     <!-- SECTION 7: FAQ (RESTORED) -->
-    <section id="faq" class="py-20 relative">
+    <section id="faq" class="py-16 md:py-20 relative">
         <!-- Distributed 3D Block -->
-        <div class="block-3d w-12 h-12 top-10 left-[20%] animate-float-slow text-gray-400 text-2xl opacity-40">Q</div>
+        <div class="block-3d w-12 h-12 top-10 left-[20%] animate-float-slow text-gray-400 text-2xl opacity-40 hidden sm:flex">Q</div>
 
         <div class="container mx-auto px-4 max-w-4xl relative z-10">
             <h2 class="text-3xl font-black text-center mb-12" data-i18n="faq_title">Frequently Asked Questions</h2>
@@ -520,7 +566,7 @@
                         <span data-i18n="faq_1_q">How do I pay for the package?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-indigo-500"></i>
                     </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="faq_1_a">
+                    <p class="mt-4 text-slate-600 leading-relaxed text-sm md:text-base" data-i18n="faq_1_a">
                         You can easily subscribe using any Bank Card (Visa/Master). We never charge large amounts at once—only your monthly package fee. Cancel anytime!
                     </p>
                 </details>
@@ -530,7 +576,7 @@
                         <span data-i18n="faq_2_q">What happens if I finish my tokens?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-indigo-500"></i>
                     </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="faq_2_a">
+                    <p class="mt-4 text-slate-600 leading-relaxed text-sm md:text-base" data-i18n="faq_2_a">
                         Your tokens reset every 24 hours. If you run out, you can wait for the next day or upgrade your package to Fusion or Quantum.
                     </p>
                 </details>
@@ -540,7 +586,7 @@
                         <span data-i18n="faq_3_q">Is the AI Counsellor a real person?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-indigo-500"></i>
                     </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="faq_3_a">
+                    <p class="mt-4 text-slate-600 leading-relaxed text-sm md:text-base" data-i18n="faq_3_a">
                         No, it is a highly advanced AI trained to listen and provide emotional support. It is 100% private and does not save any conversations.
                     </p>
                 </details>
@@ -550,7 +596,7 @@
                         <span data-i18n="faq_4_q">Can I use it on my phone?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-indigo-500"></i>
                     </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="faq_4_a">
+                    <p class="mt-4 text-slate-600 leading-relaxed text-sm md:text-base" data-i18n="faq_4_a">
                         Yes! නැණ AI is fully mobile-responsive. It works perfectly on smartphones, tablets, and laptops without needing to download an app.
                     </p>
                 </details>
@@ -617,6 +663,12 @@
 
     <script>
         lucide.createIcons();
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+        }
+
         const translations = {
             en: {
                 brand_name: "නැණ AI Platform",
